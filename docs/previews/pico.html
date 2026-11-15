@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pico CSS 預覽</title>
+<link href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css" rel="stylesheet">
+<style>
+  :root { --pico-font-family: system-ui, "Noto Sans TC", "PingFang TC", sans-serif; }
+  body { overflow-x: hidden; }
+</style>
+</head>
+<body>
+<header class="container">
+  <nav>
+    <ul><li><strong>📦 範例專案</strong></li></ul>
+    <ul><li><a href="#">首頁</a></li><li><a href="#">設定</a></li></ul>
+  </nav>
+</header>
+<main class="container">
+  <p><mark>Pico CSS：</mark>幾乎不寫 class，原生 HTML 就有乾淨排版，會跟著系統自動切深色模式。</p>
+  <div class="grid">
+    <article>
+      <header><strong>今日摘要</strong></header>
+      <p>這是一張卡片，放標題、說明文字和操作按鈕。</p>
+      <div role="group">
+        <button>主要按鈕</button>
+        <button class="secondary outline">次要按鈕</button>
+      </div>
+    </article>
+    <article>
+      <header><strong>表單</strong></header>
+      <input placeholder="輸入關鍵字">
+      <select><option>選項一</option><option>選項二</option></select>
+      <label><input type="checkbox" role="switch" checked> 開啟通知</label>
+    </article>
+  </div>
+  <article>
+    <header><strong>資料表</strong></header>
+    <div class="overflow-auto">
+      <table>
+        <thead><tr><th>名稱</th><th>狀態</th><th>數量</th></tr></thead>
+        <tbody>
+          <tr><td>項目 A</td><td>✅ 完成</td><td>12</td></tr>
+          <tr><td>項目 B</td><td>⏳ 進行中</td><td>7</td></tr>
+          <tr><td>項目 C</td><td>— 待處理</td><td>3</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <progress value="62" max="100"></progress>
+  </article>
+</main>
+</body>
+</html>

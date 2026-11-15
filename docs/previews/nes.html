@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NES.css 預覽</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=DotGothic16&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/nes.css@2.3.0/css/nes.min.css" rel="stylesheet">
+<style>
+  body { margin: 0; background: #fff; font-family: "Press Start 2P", "DotGothic16", monospace; font-size: 13px; overflow-x: hidden; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 16px; display: grid; gap: 22px; }
+  .zh { font-family: "DotGothic16", monospace; font-size: 16px; }
+  .row { display: flex; flex-wrap: wrap; gap: 10px; }
+  .grid2 { display: grid; gap: 22px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .scroll { overflow-x: auto; }
+  h1 { font-size: 18px; margin: 0; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1><i class="nes-icon star is-small"></i> SAMPLE PROJECT</h1>
+  <div class="nes-container is-rounded zh">NES.css：紅白機像素風。中文用 DotGothic16 點陣字。</div>
+  <div class="grid2">
+    <section class="nes-container with-title">
+      <p class="title">今日摘要</p>
+      <p class="zh">這是一張卡片，放標題、說明文字和操作按鈕。</p>
+      <div class="row">
+        <button class="nes-btn is-primary zh">主要</button>
+        <button class="nes-btn zh">次要</button>
+        <button class="nes-btn is-error zh">刪除</button>
+      </div>
+    </section>
+    <section class="nes-container with-title">
+      <p class="title">表單</p>
+      <input class="nes-input zh" placeholder="輸入關鍵字">
+      <div class="nes-select" style="margin-top:12px"><select class="zh"><option>選項一</option><option>選項二</option></select></div>
+      <label style="display:block;margin-top:12px"><input type="checkbox" class="nes-checkbox" checked><span class="zh">開啟通知</span></label>
+    </section>
+  </div>
+  <section class="nes-container with-title">
+    <p class="title">資料表</p>
+    <div class="scroll">
+      <table class="nes-table is-bordered zh">
+        <thead><tr><th>名稱</th><th>狀態</th><th>數量</th></tr></thead>
+        <tbody>
+          <tr><td>項目 A</td><td>完成</td><td>12</td></tr>
+          <tr><td>項目 B</td><td>進行中</td><td>7</td></tr>
+          <tr><td>項目 C</td><td>待處理</td><td>3</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <progress class="nes-progress is-success" value="62" max="100" style="margin-top:12px"></progress>
+  </section>
+</main>
+</body>
+</html>

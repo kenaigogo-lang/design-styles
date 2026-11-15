@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bootswatch 預覽</title>
+<link id="bs" href="https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/flatly/bootstrap.min.css" rel="stylesheet">
+<style>
+  body { font-family: system-ui, "Noto Sans TC", "PingFang TC", sans-serif; overflow-x: hidden; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 16px; }
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand bg-primary" data-bs-theme="dark">
+  <div class="container-fluid" style="max-width:860px">
+    <span class="navbar-brand fw-bold">📦 範例專案</span>
+    <select class="form-select form-select-sm w-auto" id="theme" aria-label="切換主題"></select>
+  </div>
+</nav>
+<main class="wrap">
+  <div class="alert alert-info">Bootswatch：Bootstrap 5 的 25 套主題，右上角切換。</div>
+  <div class="row g-3 mb-3">
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">今日摘要 <span class="badge bg-secondary">NEW</span></h5>
+          <p class="card-text">這是一張卡片，放標題、說明文字和操作按鈕。</p>
+          <button class="btn btn-primary">主要按鈕</button>
+          <button class="btn btn-outline-secondary">次要按鈕</button>
+          <button class="btn btn-link">文字按鈕</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title">表單</h5>
+          <input class="form-control mb-2" placeholder="輸入關鍵字">
+          <select class="form-select mb-2"><option>選項一</option><option>選項二</option></select>
+          <div class="form-check form-switch"><input class="form-check-input" type="checkbox" id="n" checked><label class="form-check-label" for="n">開啟通知</label></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">資料表</h5>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead><tr><th>名稱</th><th>狀態</th><th>數量</th></tr></thead>
+          <tbody>
+            <tr><td>項目 A</td><td><span class="badge bg-success">完成</span></td><td>12</td></tr>
+            <tr><td>項目 B</td><td><span class="badge bg-warning">進行中</span></td><td>7</td></tr>
+            <tr><td>項目 C</td><td><span class="badge bg-secondary">待處理</span></td><td>3</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="progress"><div class="progress-bar" style="width:62%"></div></div>
+    </div>
+  </div>
+</main>
+<script>
+  const T = ["flatly","cerulean","cosmo","cyborg","darkly","journal","litera","lumen","lux","materia","minty","morph","pulse","quartz","sandstone","simplex","sketchy","slate","solar","spacelab","superhero","united","vapor","yeti","zephyr"];
+  const sel = document.getElementById("theme"), link = document.getElementById("bs");
+  const q = new URLSearchParams(location.search).get("theme");
+  for (const t of T) sel.add(new Option(t, t));
+  const set = (t) => { link.href = `https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/${t}/bootstrap.min.css`; sel.value = t; };
+  set(T.includes(q) ? q : "flatly");
+  sel.onchange = () => set(sel.value);
+</script>
+</body>
+</html>

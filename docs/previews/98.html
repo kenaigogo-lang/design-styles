@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>98.css 預覽</title>
+<link href="https://cdn.jsdelivr.net/npm/98.css@0.1.20/dist/98.css" rel="stylesheet">
+<style>
+  body { margin: 0; background: #008080; overflow-x: hidden; }
+  body, button, input, select, table { font-family: "Pixelated MS Sans Serif", Arial, "Microsoft JhengHei", "PingFang TC", sans-serif; font-size: 13px; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 16px; display: grid; gap: 16px; }
+  .grid2 { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+  .row { display: flex; flex-wrap: wrap; gap: 6px; }
+  .field-row-stacked { margin-bottom: 8px; }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <div class="window">
+    <div class="title-bar"><div class="title-bar-text">📦 範例專案 - 98.css</div>
+      <div class="title-bar-controls"><button aria-label="Minimize"></button><button aria-label="Maximize"></button><button aria-label="Close"></button></div></div>
+    <div class="window-body"><p>98.css：Windows 98 經典介面，按鈕、表單都是原生元素。</p></div>
+  </div>
+  <div class="grid2">
+    <div class="window">
+      <div class="title-bar"><div class="title-bar-text">今日摘要</div></div>
+      <div class="window-body">
+        <p>這是一張卡片，放標題、說明文字和操作按鈕。</p>
+        <div class="row"><button>確定</button><button>取消</button><button disabled>停用</button></div>
+      </div>
+    </div>
+    <div class="window">
+      <div class="title-bar"><div class="title-bar-text">表單</div></div>
+      <div class="window-body">
+        <div class="field-row-stacked"><label for="k">關鍵字</label><input id="k" type="text"></div>
+        <div class="field-row-stacked"><label for="s">選項</label><select id="s"><option>選項一</option><option>選項二</option></select></div>
+        <div class="field-row"><input type="checkbox" id="c" checked><label for="c">開啟通知</label></div>
+      </div>
+    </div>
+  </div>
+  <div class="window">
+    <div class="title-bar"><div class="title-bar-text">資料表</div></div>
+    <div class="window-body">
+      <div class="sunken-panel" style="overflow-x:auto">
+        <table class="interactive" style="width:100%">
+          <thead><tr><th>名稱</th><th>狀態</th><th>數量</th></tr></thead>
+          <tbody>
+            <tr><td>項目 A</td><td>完成</td><td>12</td></tr>
+            <tr><td>項目 B</td><td>進行中</td><td>7</td></tr>
+            <tr><td>項目 C</td><td>待處理</td><td>3</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="progress-indicator segmented" style="margin-top:10px"><span class="progress-indicator-bar" style="width:62%"></span></div>
+    </div>
+  </div>
+</main>
+</body>
+</html>

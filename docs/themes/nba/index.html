@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>風格預覽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:ital,wght@0,600;1,700;1,800&family=Bebas+Neue&family=Noto+Sans+TC:wght@400;700;900&family=Noto+Serif+TC:wght@700;900&family=Orbitron:wght@600;800&family=Oswald:wght@500;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+  :root { --page: #e9e9ec; --ink: #16181d; --muted: #5d6370; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --page: #121318; --ink: #eceef2; --muted: #9aa0ad; } }
+  :root[data-theme="dark"] { --page: #121318; --ink: #eceef2; --muted: #9aa0ad; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--page); color: var(--ink); font: 15px/1.5 "Noto Sans TC", system-ui, sans-serif; overflow-x: hidden; }
+  .intro { max-width: 1180px; margin: 0 auto; padding: 28px 16px 8px; }
+  .intro h1 { margin: 0 0 4px; font-size: 24px; }
+  .intro p { margin: 0; color: var(--muted); }
+  .grid { max-width: 1180px; margin: 0 auto; padding: 16px; display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); }
+  .opt h2 { font-size: 17px; margin: 0 0 2px; }
+  .opt .desc { color: var(--muted); font-size: 13px; margin: 0 0 10px; min-height: 40px; }
+  .stage { border-radius: 16px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.18); }
+  .stage img { width: 42px; height: 42px; object-fit: contain; }
+  .row { display: flex; align-items: center; gap: 10px; }
+  .row .t { flex: 1; display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .row .t.h { flex-direction: row-reverse; text-align: right; }
+  .row .t b { display: block; font-size: 18px; line-height: 1.1; }
+  .row .t small { display: block; font-size: 11px; opacity: .7; }
+  .meta { font-size: 12px; margin-top: 8px; opacity: .75; }
+  .acts { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .wait { font-size: 13px; }
+  @media (max-width: 400px) { .grid { grid-template-columns: 1fr; } }
+
+  /* ===== A. 球場木地板 ===== */
+  .A { background:
+      repeating-linear-gradient(90deg, rgba(120,70,20,.10) 0 2px, transparent 2px 46px),
+      repeating-linear-gradient(90deg, #e7b675 0 23px, #ddaa66 23px 46px);
+    color: #1d2333; padding: 16px; font-family: "Noto Sans TC"; position: relative; }
+  .A::before { content: ""; position: absolute; left: 50%; top: -70px; width: 140px; height: 140px; margin-left: -70px; border: 3px solid rgba(255,255,255,.75); border-radius: 50%; }
+  .A h3 { position: relative; font: 700 26px/1 "Oswald"; letter-spacing: .04em; margin: 0 0 14px; color: #13254a; text-align: center; }
+  .A .card { position: relative; background: rgba(255,250,240,.92); border: 3px solid #fff; border-radius: 6px; padding: 12px; margin-top: 10px; box-shadow: 0 4px 0 rgba(90,50,10,.25); }
+  .A .rk { font: 700 22px "Oswald"; color: #c8102e; width: 26px; }
+  .A .play { font: 700 15px "Oswald"; letter-spacing: .05em; background: #13254a; color: #fff; border: 0; border-radius: 4px; padding: 8px 14px; }
+  .A .box { background: transparent; border: 2px solid #13254a; color: #13254a; border-radius: 4px; padding: 6px 10px; font-size: 13px; }
+  .A .wait { color: #9a5b00; font-weight: 700; }
+
+  /* ===== B. 夜間球館 LED ===== */
+  .B { background: radial-gradient(ellipse at 50% -10%, rgba(255,214,140,.35), transparent 55%), radial-gradient(ellipse at 50% 120%, #0a1a3a, #04060c 70%); color: #e8ecf5; padding: 16px; }
+  .B h3 { font: 800 20px "Orbitron"; letter-spacing: .12em; text-align: center; margin: 4px 0 14px; color: #ffb43a; text-shadow: 0 0 10px rgba(255,170,40,.8), 0 0 24px rgba(255,140,0,.4); }
+  .B .card { background: #0b0d12; border: 1px solid #262c3a; border-radius: 10px; padding: 12px; margin-top: 10px; box-shadow: inset 0 0 0 3px #11151e, 0 0 24px rgba(0,0,0,.6);
+    background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px); background-size: 4px 4px; }
+  .B .rk { font: 800 18px "Orbitron"; color: #ff4b3a; text-shadow: 0 0 8px rgba(255,60,40,.9); width: 26px; }
+  .B .t b { font-family: "Noto Sans TC"; }
+  .B .t small { font-family: "Orbitron"; letter-spacing: .1em; color: #ffb43a; opacity: .9; }
+  .B .play { font: 800 13px "Orbitron"; letter-spacing: .08em; color: #0b0d12; background: #ffb43a; border: 0; border-radius: 6px; padding: 9px 14px; box-shadow: 0 0 16px rgba(255,170,40,.6); }
+  .B .box { background: transparent; border: 1px solid #3a4152; color: #9aa3b8; border-radius: 6px; padding: 7px 10px; font-size: 12px; }
+  .B .wait { font-family: "Orbitron"; font-size: 12px; color: #ff4b3a; letter-spacing: .06em; }
+
+  /* ===== C. 復古票根 ===== */
+  .C { background: #f3ead8; background-image: radial-gradient(rgba(120,90,40,.08) 1px, transparent 1px); background-size: 6px 6px; color: #23201b; padding: 16px; }
+  .C h3 { font: 400 36px/1 "Bebas Neue"; letter-spacing: .06em; text-align: center; margin: 2px 0 12px; color: #b3261e; border-top: 3px double #23201b; border-bottom: 3px double #23201b; padding: 6px 0 2px; }
+  .C .card { display: flex; margin-top: 12px; background: #fffaf0; border: 2px solid #23201b; border-radius: 4px; position: relative; }
+  .C .stub { width: 54px; border-right: 2px dashed #23201b; display: grid; place-items: center; background: #b3261e; color: #fffaf0; font: 400 30px "Bebas Neue"; writing-mode: vertical-rl; letter-spacing: .1em; }
+  .C .body { flex: 1; padding: 12px; min-width: 0; }
+  .C .t b { font-family: "Noto Serif TC"; font-weight: 900; }
+  .C .t small { font: 400 15px "Bebas Neue"; letter-spacing: .1em; opacity: .8; }
+  .C .meta { font: 400 15px "Bebas Neue"; letter-spacing: .08em; }
+  .C .play { font: 400 18px "Bebas Neue"; letter-spacing: .1em; background: #23201b; color: #f3ead8; border: 0; padding: 6px 14px; border-radius: 2px; }
+  .C .box { background: transparent; border: 1.5px solid #23201b; color: #23201b; padding: 5px 9px; font-size: 12px; border-radius: 2px; }
+  .C .wait { color: #b3261e; font-weight: 700; }
+
+  /* ===== D. 球衣撞色 ===== */
+  .D { background: #101114; background-image: radial-gradient(circle, rgba(255,255,255,.06) 1.2px, transparent 1.4px); background-size: 7px 7px; color: #fff; padding: 16px; }
+  .D h3 { font: 400 34px/1 "Anton"; text-transform: uppercase; margin: 0 0 12px; letter-spacing: .02em; }
+  .D h3 span { color: #ffc72c; }
+  .D .card { margin-top: 10px; border-radius: 12px; padding: 12px; position: relative; overflow: hidden;
+    background: linear-gradient(115deg, var(--a) 0 49.5%, #fff 49.5% 50.5%, var(--h) 50.5% 100%); }
+  .D .card::after { content: attr(data-rank); position: absolute; right: 50%; transform: translateX(50%); top: -18px; font: 400 92px/1 "Anton"; color: rgba(255,255,255,.14); pointer-events: none; }
+  .D .t img { filter: drop-shadow(0 2px 4px rgba(0,0,0,.4)); background: #fff; border-radius: 50%; padding: 4px; }
+  .D .t b { font-weight: 900; text-shadow: 0 2px 6px rgba(0,0,0,.35); }
+  .D .rk { display: none; }
+  .D .play { font: 400 16px "Anton"; letter-spacing: .06em; background: #fff; color: #111; border: 0; border-radius: 999px; padding: 7px 16px; }
+  .D .box { background: rgba(0,0,0,.35); border: 0; color: #fff; padding: 7px 12px; font-size: 12px; border-radius: 999px; }
+  .D .wait { font-weight: 700; background: rgba(0,0,0,.35); padding: 4px 10px; border-radius: 999px; }
+
+  /* ===== E. 轉播畫面 ===== */
+  .E { background: linear-gradient(160deg, #0d2a6b, #071433 60%); color: #fff; padding: 16px; font-family: "Barlow Condensed", "Noto Sans TC"; }
+  .E h3 { margin: 0 0 12px; display: inline-flex; font: italic 800 24px/1 "Barlow Condensed"; text-transform: uppercase; }
+  .E h3 span:first-child { background: #d50a0a; padding: 6px 12px; transform: skewX(-12deg); }
+  .E h3 span:last-child { background: #fff; color: #0d2a6b; padding: 6px 12px; transform: skewX(-12deg); }
+  .E .card { margin-top: 10px; background: linear-gradient(180deg, #ffffff, #dfe5f1); color: #0d1c3d; border-radius: 4px; padding: 0 12px 12px 0; overflow: hidden; border-left: 8px solid #d50a0a; }
+  .E .card .row { padding: 12px 0 0 12px; }
+  .E .rk { font: italic 800 26px "Barlow Condensed"; color: #d50a0a; width: 24px; }
+  .E .t b { font-weight: 900; }
+  .E .t small { font: italic 700 13px "Barlow Condensed"; text-transform: uppercase; letter-spacing: .06em; }
+  .E .meta, .E .acts { padding-left: 12px; }
+  .E .meta span { background: #0d2a6b; color: #fff; padding: 1px 8px; font: italic 600 13px "Barlow Condensed"; margin-right: 6px; }
+  .E .play { font: italic 800 17px "Barlow Condensed"; text-transform: uppercase; background: #d50a0a; color: #fff; border: 0; padding: 6px 18px; transform: skewX(-12deg); }
+  .E .box { background: transparent; border: 2px solid #0d2a6b; color: #0d2a6b; padding: 4px 10px; font: 700 13px "Noto Sans TC"; transform: skewX(-12deg); }
+  .E .wait { color: #d50a0a; font-weight: 900; }
+
+  /* ===== F. 戰術板 ===== */
+  .F { background: #1f3b2d; background-image: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,.08), transparent 60%), url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='120'%3E%3Cg fill='none' stroke='rgba(255,255,255,0.12)' stroke-width='2'%3E%3Cpath d='M20 90 q40 -60 90 -20 t90 -30' stroke-dasharray='6 6'/%3E%3Ccircle cx='30' cy='30' r='9'/%3E%3Cpath d='M170 70 l14 14 M184 70 l-14 14'/%3E%3C/g%3E%3C/svg%3E"); color: #f1f3ea; padding: 16px; border: 10px solid #6b4a2b; border-radius: 16px; }
+  .F h3 { font: 400 28px/1.1 "Permanent Marker"; margin: 0 0 10px; transform: rotate(-2deg); color: #fff8c4; }
+  .F .card { margin-top: 10px; border: 2px dashed rgba(255,255,255,.55); border-radius: 14px; padding: 12px; }
+  .F .rk { font: 400 24px "Permanent Marker"; color: #ffd36b; width: 26px; }
+  .F .t img { filter: grayscale(1) brightness(1.8) contrast(.9); opacity: .9; }
+  .F .t small { font: 400 13px "Permanent Marker"; opacity: .8; }
+  .F .play { font: 400 16px "Permanent Marker"; background: #fff8c4; color: #1f3b2d; border: 0; border-radius: 4px 10px 4px 12px; padding: 6px 14px; transform: rotate(-1.5deg); }
+  .F .box { background: transparent; border: 2px solid rgba(255,255,255,.6); color: #f1f3ea; border-radius: 10px 4px 12px 4px; padding: 5px 10px; font-size: 12px; }
+  .F .wait { font-family: "Permanent Marker"; color: #ffd36b; }
+</style>
+</head>
+<body>
+<div class="intro">
+  <h1>NBA 每日精華：風格預覽</h1>
+  <p>為 DailyHighlight（NBA 每日精華）設計的六個方向。實際採用 C、D、E 隨機切換，正式樣式在 <a href="skins-CDE.css">skins-CDE.css</a>，使用範例：<a href="https://kenaigogo-lang.github.io/DailyHighlight/">DailyHighlight</a>。</p>
+</div>
+<div class="grid" id="grid"></div>
+
+<template id="tpl">
+  <section class="opt">
+    <h2></h2>
+    <p class="desc"></p>
+    <div class="stage"></div>
+  </section>
+</template>
+
+<script>
+const L = (a) => `https://a.espncdn.com/i/teamlogos/nba/500/${a}.png`;
+const G = [
+  { r: 1, a: ["okc", "雷霆", "Thunder", "#007ac1"], h: ["lac", "快艇", "Clippers", "#c8102e"], time: "11/14 11:30 開打", tag: "NBA Cup", video: true },
+  { r: 2, a: ["gs", "勇士", "Warriors", "#1d428a"], h: ["sa", "馬刺", "Spurs", "#5b6670"], time: "11/14 10:30 開打", tag: "NBA Cup", video: false },
+];
+const team = ([abbr, zh, en], cls) => `<div class="t ${cls}"><img src="${L(abbr)}" alt=""><span><b>${zh}</b><small>${en}</small></span></div>`;
+const card = (g) => `
+  <div class="row"><span class="rk">${g.r}</span>${team(g.a, "a")}${team(g.h, "h")}</div>
+  <div class="meta"><span>${g.tag}</span> ${g.time}（台灣）</div>
+  <div class="acts">${g.video ? '<button class="play">▶ 看下半場</button>' : '<span class="wait">⏳ 影片還沒上架</span>'}<button class="box">⚠️ 查看數據（含比分）</button></div>`;
+
+const OPTS = [
+  { k: "A", name: "A. 球場木地板", desc: "淺色楓木地板紋路加白色中圈線，海軍藍搭紅色，乾淨明亮，白天看最舒服。",
+    head: "NBA DAILY HIGHLIGHTS", render: (g) => `<div class="card">${card(g)}</div>` },
+  { k: "B", name: "B. 夜間球館 LED", desc: "黑色球館加頂燈光暈，比賽卡片是 LED 點陣計分板，琥珀色發光字，晚上看很有臨場感。",
+    head: "TONIGHT'S GAMES", render: (g) => `<div class="card">${card(g)}</div>` },
+  { k: "C", name: "C. 復古票根", desc: "米色紙張質感，每場比賽是一張撕得下來的門票，左側票根印排名，經典報紙標題字。",
+    head: "Admit One · Daily Highlights", render: (g) => `<div class="card"><div class="stub">No.${g.r}</div><div class="body">${card(g)}</div></div>` },
+  { k: "D", name: "D. 球衣撞色", desc: "每張卡片用兩隊的代表色斜切對撞，背景是球衣網眼布紋，大號碼排名當浮水印，最有衝擊感。",
+    head: "Daily <span>Highlights</span>", render: (g) => `<div class="card" data-rank="${g.r}" style="--a:${g.a[3]};--h:${g.h[3]}">${card(g)}</div>` },
+  { k: "E", name: "E. 電視轉播畫面", desc: "仿電視轉播下方字幕條的斜切色塊，紅白藍配色加斜體窄字，像在看賽後節目。",
+    head: "<span>NBA</span><span>Highlights</span>", render: (g) => `<div class="card">${card(g)}</div>` },
+  { k: "F", name: "F. 教練戰術板", desc: "綠色黑板配木框，粉筆手寫字和跑位虛線，隊徽變成粉筆白，比較輕鬆、有手作感。",
+    head: "Today's Game Plan", render: (g) => `<div class="card">${card(g)}</div>` },
+];
+
+const grid = document.getElementById("grid");
+for (const o of OPTS) {
+  const el = document.getElementById("tpl").content.firstElementChild.cloneNode(true);
+  el.querySelector("h2").textContent = o.name;
+  el.querySelector(".desc").textContent = o.desc;
+  const st = el.querySelector(".stage");
+  st.classList.add(o.k);
+  st.innerHTML = `<h3>${o.head}</h3>` + G.map(o.render).join("");
+  grid.append(el);
+}
+</script>
+</body>
+</html>

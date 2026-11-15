@@ -1,0 +1,141 @@
+/* =========================================================
+   三種主題（由 <html data-skin="C|D|E"> 決定）
+   C 復古票根 / D 球衣撞色 / E 電視轉播
+   共用版面在 style.css，這裡只換顏色、字體和裝飾。
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   C. 復古票根：米色紙張、每場是一張門票、左側票根印排名
+   --------------------------------------------------------- */
+:root[data-skin="C"] {
+  --bg: #f3ead8; --surface: #fffaf0; --surface-2: #efe4cc; --border: #23201b;
+  --text: #23201b; --muted: #6b6253; --accent: #b3261e; --accent-text: #fffaf0; --warn: #b3261e;
+  color-scheme: light;
+}
+[data-skin="C"] body {
+  background-color: var(--bg);
+  background-image: radial-gradient(rgba(120, 90, 40, .09) 1px, transparent 1px);
+  background-size: 6px 6px;
+}
+[data-skin="C"] .top { background: color-mix(in srgb, var(--bg) 92%, transparent); border-bottom: 3px double var(--border); }
+[data-skin="C"] h1 { font: 400 32px/1 "Bebas Neue", "Noto Serif TC", serif; color: var(--accent); letter-spacing: .06em; }
+[data-skin="C"] h1 .h1b { font-family: "Noto Serif TC", serif; font-weight: 900; font-size: 24px; color: var(--text); }
+[data-skin="C"] .skin-btn { border: 1.5px solid var(--border); border-radius: 2px; background: transparent; }
+[data-skin="C"] .date-chip { border: 1.5px solid var(--border); border-radius: 2px; background: transparent; font-family: "Bebas Neue", sans-serif; font-size: 18px; letter-spacing: .06em; padding: 3px 12px; }
+[data-skin="C"] .date-chip small { font-family: "Noto Sans TC", sans-serif; font-size: 12px; }
+[data-skin="C"] .date-chip[aria-current="true"] { background: var(--accent); border-color: var(--accent); }
+[data-skin="C"] .game {
+  border: 2px solid var(--border); border-radius: 4px; padding-left: 70px;
+  box-shadow: 3px 3px 0 rgba(35, 32, 27, .18);
+}
+[data-skin="C"] .stub {
+  display: grid; place-items: center; position: absolute; left: 0; top: 0; bottom: 0; width: 54px;
+  background: var(--accent); color: var(--accent-text); border-right: 2px dashed var(--border);
+  font: 400 26px "Bebas Neue", sans-serif; letter-spacing: .12em; writing-mode: vertical-rl;
+}
+[data-skin="C"] .stub::before, [data-skin="C"] .stub::after { /* 票根打孔 */
+  content: ""; position: absolute; right: -9px; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--border);
+}
+[data-skin="C"] .stub::before { top: -9px; }
+[data-skin="C"] .stub::after { bottom: -9px; }
+[data-skin="C"] .game[data-pending] .stub { background: #8f8676; }
+[data-skin="C"] .rank { display: none; }
+[data-skin="C"] .team .name { font-family: "Noto Serif TC", serif; font-weight: 900; }
+[data-skin="C"] .team .name small { font: 400 15px "Bebas Neue", sans-serif; letter-spacing: .1em; }
+[data-skin="C"] .meta { margin-left: 0; font: 400 16px "Bebas Neue", "Noto Sans TC", sans-serif; letter-spacing: .06em; }
+[data-skin="C"] .tag { background: transparent; border: 1px solid var(--border); border-radius: 2px; }
+[data-skin="C"] .btn { border-radius: 2px; border: 1.5px solid var(--border); background: transparent; }
+[data-skin="C"] .btn.primary { background: var(--text); color: var(--bg); border-color: var(--text); font: 400 20px "Bebas Neue", "Noto Sans TC", sans-serif; letter-spacing: .1em; padding: 4px 16px; }
+[data-skin="C"] .btn.ghost { color: var(--text); }
+[data-skin="C"] .btn.sound { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+[data-skin="C"] .status { font-weight: 700; }
+[data-skin="C"] .frame { border-radius: 2px; border: 2px solid var(--border); }
+[data-skin="C"] .cover-btn { background: var(--accent); color: var(--accent-text); }
+[data-skin="C"] .boxscore { border-top: 2px dashed var(--border); }
+[data-skin="C"] .boxscore h3 { font-family: "Noto Serif TC", serif; }
+
+/* ---------------------------------------------------------
+   D. 球衣撞色：卡片用兩隊代表色斜切對撞、網眼布紋、大號碼浮水印
+   --------------------------------------------------------- */
+:root[data-skin="D"] {
+  --bg: #101114; --surface: #1b1d22; --surface-2: #2a2d35; --border: #2f333d;
+  --text: #ffffff; --muted: #c9cdd6; --accent: #ffc72c; --accent-text: #111111; --warn: #ffc72c;
+  color-scheme: dark;
+}
+[data-skin="D"] body {
+  background-color: var(--bg);
+  background-image: radial-gradient(circle, rgba(255, 255, 255, .06) 1.2px, transparent 1.4px);
+  background-size: 7px 7px;
+}
+[data-skin="D"] h1 { font: 400 30px/1 "Anton", "Noto Sans TC", sans-serif; text-transform: uppercase; }
+[data-skin="D"] h1 .h1b { color: var(--accent); font-family: "Noto Sans TC", sans-serif; font-weight: 900; font-size: 24px; }
+[data-skin="D"] .skin-btn, [data-skin="D"] .date-chip { border: 0; background: var(--surface-2); }
+[data-skin="D"] .date-chip[aria-current="true"] { background: var(--accent); color: var(--accent-text); }
+[data-skin="D"] .game {
+  border: 0; border-radius: 14px; overflow: hidden; color: #fff;
+  /* 撞色只畫在卡片上方（展開 box score 時下方維持深色） */
+  background:
+    linear-gradient(115deg, var(--a, #333) 0 49.6%, #fff 49.6% 50.4%, var(--h, #555) 50.4% 100%) top / 100% 250px no-repeat,
+    var(--surface);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .45);
+}
+[data-skin="D"] .game::after { /* 大號碼浮水印 */
+  content: attr(data-rank); position: absolute; left: 50%; top: -22px; transform: translateX(-50%);
+  font: 400 110px/1 "Anton", sans-serif; color: rgba(255, 255, 255, .14); pointer-events: none;
+}
+[data-skin="D"] .game > * { position: relative; z-index: 1; }
+[data-skin="D"] .rank { display: none; }
+[data-skin="D"] .team img { background: #fff; border-radius: 50%; padding: 4px; box-shadow: 0 2px 6px rgba(0, 0, 0, .35); }
+[data-skin="D"] .team .name { font-weight: 900; text-shadow: 0 2px 6px rgba(0, 0, 0, .4); }
+[data-skin="D"] .team .name small { color: rgba(255, 255, 255, .8); }
+[data-skin="D"] .at { color: rgba(255, 255, 255, .8); }
+[data-skin="D"] .meta { color: rgba(255, 255, 255, .85); margin-left: 0; }
+[data-skin="D"] .tag { background: rgba(0, 0, 0, .3); }
+[data-skin="D"] .btn { border-radius: 999px; }
+[data-skin="D"] .btn.primary { background: #fff; color: #111; border-color: #fff; font: 400 17px "Anton", "Noto Sans TC", sans-serif; letter-spacing: .05em; }
+[data-skin="D"] .btn.ghost, [data-skin="D"] .btn.small { background: rgba(0, 0, 0, .38); border-color: transparent; color: #fff; }
+[data-skin="D"] .status { background: rgba(0, 0, 0, .38); color: #fff; padding: 4px 12px; border-radius: 999px; font-weight: 700; }
+[data-skin="D"] .boxscore { background: var(--surface); border-radius: 10px; border-top: 0; padding: 10px; }
+[data-skin="D"] .cover-btn { background: var(--accent); color: var(--accent-text); }
+[data-skin="D"] .btn.sound { border-radius: 999px; }
+
+/* ---------------------------------------------------------
+   E. 電視轉播：深藍背景、白色字幕條卡片、紅色斜切色塊、斜體窄字
+   --------------------------------------------------------- */
+:root[data-skin="E"] {
+  --bg: #071433; --surface: #0d2a6b; --surface-2: #163a8a; --border: #2a4a92;
+  --text: #ffffff; --muted: #b8c4e0; --accent: #d50a0a; --accent-text: #ffffff; --warn: #ffd34d;
+  color-scheme: dark;
+}
+[data-skin="E"] body { background: linear-gradient(160deg, #0d2a6b, #071433 55%) fixed; }
+[data-skin="E"] .top { background: rgba(7, 20, 51, .9); border-bottom: 3px solid var(--accent); }
+[data-skin="E"] h1 { gap: 0; font: italic 800 26px/1 "Barlow Condensed", "Noto Sans TC", sans-serif; text-transform: uppercase; }
+[data-skin="E"] h1 span { padding: 6px 12px; transform: skewX(-12deg); }
+[data-skin="E"] h1 .h1a { background: var(--accent); }
+[data-skin="E"] h1 .h1b { background: #fff; color: #0d2a6b; font-style: normal; font-family: "Noto Sans TC", sans-serif; font-weight: 900; font-size: 20px; }
+[data-skin="E"] .skin-btn { border-radius: 0; transform: skewX(-12deg); background: transparent; border: 2px solid #fff; }
+[data-skin="E"] .date-chip { border-radius: 0; transform: skewX(-12deg); background: rgba(255, 255, 255, .08); border: 0; font: italic 700 17px "Barlow Condensed", sans-serif; }
+[data-skin="E"] .date-chip[aria-current="true"] { background: var(--accent); color: #fff; }
+[data-skin="E"] .game {
+  /* 卡片內部改成白底深藍字 */
+  --text: #0d1c3d; --muted: #4a5672; --surface: #ffffff; --surface-2: #e3e8f2; --border: #c5cee0; --warn: #d50a0a;
+  color: var(--text);
+  background: linear-gradient(180deg, #ffffff, #e4e9f3);
+  border: 0; border-left: 8px solid var(--accent); border-radius: 3px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .35);
+}
+[data-skin="E"] .rank { background: transparent; color: var(--accent); font: italic 800 30px "Barlow Condensed", sans-serif; }
+[data-skin="E"] .team .name { font-weight: 900; }
+[data-skin="E"] .team .name small { font: italic 700 13px "Barlow Condensed", sans-serif; text-transform: uppercase; letter-spacing: .06em; }
+[data-skin="E"] .tag { background: #0d2a6b; color: #fff; border-radius: 0; font: italic 600 13px "Barlow Condensed", sans-serif; padding: 1px 8px; }
+[data-skin="E"] .btn { border-radius: 0; transform: skewX(-10deg); }
+[data-skin="E"] .btn.primary { background: var(--accent); border-color: var(--accent); font: italic 800 19px "Barlow Condensed", "Noto Sans TC", sans-serif; text-transform: uppercase; padding: 5px 18px; }
+[data-skin="E"] .btn.ghost { border: 2px solid #0d2a6b; color: #0d2a6b; font-weight: 700; }
+[data-skin="E"] .btn.small { background: #0d2a6b; color: #fff; border-color: #0d2a6b; }
+[data-skin="E"] .btn.sound { background: #ffd34d; border-color: #ffd34d; }
+[data-skin="E"] .status { font-weight: 900; }
+[data-skin="E"] .frame { border-radius: 0; }
+[data-skin="E"] .cover-btn { background: var(--accent); color: #fff; }
+[data-skin="E"] .boxscore { border-top: 2px solid #0d2a6b; }
+[data-skin="E"] .hint, [data-skin="E"] .foot { color: var(--muted); }

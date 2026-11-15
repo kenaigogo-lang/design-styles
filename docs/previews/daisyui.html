@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-Hant" data-theme="cupcake">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>daisyUI 預覽</title>
+<link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.css" rel="stylesheet">
+<style>
+  body { margin: 0; font-family: system-ui, "Noto Sans TC", "PingFang TC", sans-serif; overflow-x: hidden; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 16px; display: grid; gap: 16px; }
+  .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .grid2 { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .scroll { overflow-x: auto; }
+  h1 { font-size: 22px; font-weight: 800; margin: 0; }
+</style>
+</head>
+<body class="bg-base-200">
+<div class="navbar bg-base-100 shadow">
+  <div class="wrap bar" style="padding:0 16px;width:100%">
+    <h1>📦 範例專案</h1>
+    <select class="select select-bordered select-sm" id="theme" aria-label="切換主題"></select>
+  </div>
+</div>
+<main class="wrap">
+  <div role="alert" class="alert alert-info"><span>daisyUI：同一套元件，右上角切換 30 多種主題。</span></div>
+  <div class="grid2">
+    <div class="card bg-base-100 shadow">
+      <div class="card-body">
+        <h2 class="card-title">今日摘要 <span class="badge badge-secondary">NEW</span></h2>
+        <p>這是一張卡片，放標題、說明文字和操作按鈕。</p>
+        <div class="row">
+          <button class="btn btn-primary">主要按鈕</button>
+          <button class="btn btn-outline">次要按鈕</button>
+          <button class="btn btn-ghost">文字按鈕</button>
+        </div>
+      </div>
+    </div>
+    <div class="card bg-base-100 shadow">
+      <div class="card-body">
+        <h2 class="card-title">表單</h2>
+        <input class="input input-bordered w-full" placeholder="輸入關鍵字">
+        <select class="select select-bordered w-full"><option>選項一</option><option>選項二</option></select>
+        <label class="row"><input type="checkbox" class="toggle toggle-primary" checked> 開啟通知</label>
+      </div>
+    </div>
+  </div>
+  <div class="card bg-base-100 shadow">
+    <div class="card-body">
+      <h2 class="card-title">資料表</h2>
+      <div class="scroll">
+        <table class="table">
+          <thead><tr><th>名稱</th><th>狀態</th><th>數量</th></tr></thead>
+          <tbody>
+            <tr><td>項目 A</td><td><span class="badge badge-success">完成</span></td><td>12</td></tr>
+            <tr><td>項目 B</td><td><span class="badge badge-warning">進行中</span></td><td>7</td></tr>
+            <tr><td>項目 C</td><td><span class="badge">待處理</span></td><td>3</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <progress class="progress progress-primary" value="62" max="100"></progress>
+    </div>
+  </div>
+</main>
+<script>
+  const T = ["cupcake","light","dark","bumblebee","emerald","corporate","synthwave","retro","cyberpunk","valentine","halloween","garden","forest","aqua","lofi","pastel","fantasy","wireframe","black","luxury","dracula","cmyk","autumn","business","acid","lemonade","night","coffee","winter","dim","nord","sunset"];
+  const sel = document.getElementById("theme");
+  const q = new URLSearchParams(location.search).get("theme");
+  for (const t of T) sel.add(new Option(t, t));
+  const set = (t) => { document.documentElement.dataset.theme = t; sel.value = t; };
+  set(T.includes(q) ? q : "cupcake");
+  sel.onchange = () => set(sel.value);
+</script>
+</body>
+</html>

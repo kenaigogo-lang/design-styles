@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>風格型錄</title>
+<meta name="description" content="新網頁專案的風格預覽起點：現成樣式庫 + 收藏的客製主題。">
+<style>
+  :root { --bg: #f2f2f4; --card: #ffffff; --text: #17191e; --muted: #626875; --line: #dfe1e6; --accent: #3b5bdb; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #121318; --card: #1b1d24; --text: #eceef2; --muted: #9aa0ad; --line: #2b2e38; --accent: #7c95ff; } }
+  :root[data-theme="dark"] { --bg: #121318; --card: #1b1d24; --text: #eceef2; --muted: #9aa0ad; --line: #2b2e38; --accent: #7c95ff; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.55 system-ui, "Noto Sans TC", "PingFang TC", sans-serif; overflow-x: hidden; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 32px 0 8px; }
+  h1 { margin: 0 0 6px; font-size: 26px; }
+  header p { margin: 0; color: var(--muted); max-width: 720px; }
+  .grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); padding: 20px 0 40px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; display: flex; flex-direction: column; }
+  .thumb { position: relative; height: 220px; overflow: hidden; border-bottom: 1px solid var(--line); background: #fff; }
+  .thumb iframe { position: absolute; top: 0; left: 0; width: 900px; height: 600px; border: 0; transform: scale(.4); transform-origin: 0 0; pointer-events: none; }
+  .body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .body h2 { margin: 0; font-size: 17px; }
+  .best { color: var(--muted); font-size: 13.5px; margin: 0; flex: 1; }
+  .links { display: flex; gap: 12px; flex-wrap: wrap; font-size: 14px; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .more { color: var(--muted); font-size: 13px; padding-bottom: 32px; }
+  @media (max-width: 400px) { .thumb iframe { transform: scale(.36); } }
+</style>
+</head>
+<body>
+<header class="wrap">
+  <h1>🎨 風格型錄</h1>
+  <p>每個新網頁專案開始時，從這裡挑 3～4 個現成樣式，再加 2～3 個依專案主題客製的方向，做成風格預覽來選。點縮圖可以開完整預覽（daisyUI、Bootswatch 可在預覽頁右上角切換主題）。</p>
+</header>
+<main class="wrap">
+  <div class="grid" id="grid"></div>
+  <p class="more">更多樣式庫：<a href="https://github.com/troxler/awesome-css-frameworks">awesome-css-frameworks</a> · <a href="https://github.com/dbohdan/classless-css">classless-css（附截圖）</a></p>
+</main>
+<script>
+  fetch("catalog.json").then((r) => r.json()).then(({ styles }) => {
+    const grid = document.getElementById("grid");
+    for (const s of styles) {
+      const el = document.createElement("article");
+      el.className = "card";
+      el.innerHTML = `
+        <a class="thumb" href="${s.preview}" aria-label="開啟 ${s.name} 預覽"><iframe src="${s.preview}" loading="lazy" tabindex="-1" title="${s.name}"></iframe></a>
+        <div class="body">
+          <h2>${s.name}</h2>
+          <p class="best">${s.best_for}</p>
+          <div class="links">
+            <a href="${s.preview}">開啟預覽 →</a>
+            ${s.repo ? `<a href="${s.repo}">GitHub</a>` : ""}
+            ${s.themes ? `<span style="color:var(--muted)">${s.themes.length} 套主題</span>` : ""}
+          </div>
+        </div>`;
+      grid.append(el);
+    }
+  });
+</script>
+</body>
+</html>

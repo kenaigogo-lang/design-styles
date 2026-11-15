@@ -1,0 +1,68 @@
+{
+  "_說明": "風格型錄。每個新網頁專案開始時，從這裡挑 3～4 個合適的現成樣式，再加 2～3 個專案主題客製，做成風格預覽讓使用者挑選。",
+  "styles": [
+    {
+      "id": "daisyui",
+      "name": "daisyUI 多主題",
+      "repo": "https://github.com/saadeghi/daisyui",
+      "preview": "previews/daisyui.html",
+      "best_for": "一般 App、後台、表單多的工具；一套元件 30 多種配色，改 data-theme 就換風格",
+      "include": ["<link href=\"https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.css\" rel=\"stylesheet\">"],
+      "usage": "<html data-theme=\"cupcake\">；元件 class：btn btn-primary、card、badge、alert、table、input input-bordered",
+      "themes": ["light", "dark", "cupcake", "bumblebee", "emerald", "corporate", "synthwave", "retro", "cyberpunk", "valentine", "halloween", "garden", "forest", "aqua", "lofi", "pastel", "fantasy", "wireframe", "black", "luxury", "dracula", "cmyk", "autumn", "business", "acid", "lemonade", "night", "coffee", "winter", "dim", "nord", "sunset"]
+    },
+    {
+      "id": "bootswatch",
+      "name": "Bootswatch（Bootstrap 主題）",
+      "repo": "https://github.com/thomaspark/bootswatch",
+      "preview": "previews/bootswatch.html",
+      "best_for": "穩重、資訊型網站；Bootstrap 元件齊全，25 套主題",
+      "include": ["<link href=\"https://cdn.jsdelivr.net/npm/bootswatch@5.3.3/dist/{theme}/bootstrap.min.css\" rel=\"stylesheet\">"],
+      "usage": "把 {theme} 換成主題名；元件 class 同 Bootstrap 5（btn btn-primary、card、table、alert…）",
+      "themes": ["cerulean", "cosmo", "cyborg", "darkly", "flatly", "journal", "litera", "lumen", "lux", "materia", "minty", "morph", "pulse", "quartz", "sandstone", "simplex", "sketchy", "slate", "solar", "spacelab", "superhero", "united", "vapor", "yeti", "zephyr"]
+    },
+    {
+      "id": "pico",
+      "name": "Pico CSS 極簡",
+      "repo": "https://github.com/picocss/pico",
+      "preview": "previews/pico.html",
+      "best_for": "內容為主、想要乾淨不花俏；幾乎不用寫 class，原生 HTML 就好看，自動深色模式",
+      "include": ["<link href=\"https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.min.css\" rel=\"stylesheet\">"],
+      "usage": "直接寫語意化 HTML（header/main/article/button/table）；容器加 class=\"container\""
+    },
+    {
+      "id": "nes",
+      "name": "NES.css 紅白機像素風",
+      "repo": "https://github.com/nostalgic-css/NES.css",
+      "preview": "previews/nes.html",
+      "best_for": "遊戲、趣味、懷舊主題；強烈個性",
+      "include": [
+        "<link href=\"https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap\" rel=\"stylesheet\">",
+        "<link href=\"https://cdn.jsdelivr.net/npm/nes.css@2.3.0/css/nes.min.css\" rel=\"stylesheet\">"
+      ],
+      "usage": "nes-btn is-primary、nes-container with-title、nes-table、nes-input；中文字體需另外指定"
+    },
+    {
+      "id": "98",
+      "name": "98.css Windows 98",
+      "repo": "https://github.com/jdan/98.css",
+      "preview": "previews/98.html",
+      "best_for": "復古電腦、惡搞、小工具；一看就有記憶點",
+      "include": ["<link href=\"https://cdn.jsdelivr.net/npm/98.css@0.1.20/dist/98.css\" rel=\"stylesheet\">"],
+      "usage": "<div class=\"window\"><div class=\"title-bar\">…</div><div class=\"window-body\">…</div></div>；按鈕、表單是原生元素"
+    },
+    {
+      "id": "custom",
+      "name": "主題客製",
+      "repo": "",
+      "preview": "themes/nba/index.html",
+      "best_for": "需要強烈主題感（運動、品牌、活動）；依專案內容設計 2～3 個方向",
+      "include": [],
+      "usage": "收藏在 themes/<主題名>/。目前有：nba（A 球場木地板、B 夜間球館 LED、C 復古票根、D 球衣撞色、E 電視轉播、F 教練戰術板；DailyHighlight 採用 C/D/E 隨機）"
+    }
+  ],
+  "more": [
+    "https://github.com/troxler/awesome-css-frameworks",
+    "https://github.com/dbohdan/classless-css"
+  ]
+}
