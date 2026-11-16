@@ -58,7 +58,7 @@
       "preview": "themes/nba/index.html",
       "best_for": "需要強烈主題感（運動、品牌、活動）；依專案內容設計 2～3 個方向",
       "include": [],
-      "usage": "收藏在 themes/<主題名>/。目前有：arcade（街機排行榜，為 GameRank 設計但最後未採用，見下一筆）、nba（A 球場木地板、B 夜間球館 LED、C 復古票根、D 球衣撞色、E 電視轉播、F 教練戰術板；DailyHighlight 採用 C/D/E 隨機）"
+      "usage": "收藏在 themes/<主題名>/。目前有：arcade（街機排行榜，GameRank 的第二套主題，見下一筆）、nba（A 球場木地板、B 夜間球館 LED、C 復古票根、D 球衣撞色、E 電視轉播、F 教練戰術板；DailyHighlight 採用 C/D/E 隨機）"
     },
     {
       "id": "theme-arcade",
@@ -70,7 +70,7 @@
         "<link href=\"https://fonts.googleapis.com/css2?family=VT323&family=Monoton&family=Noto+Sans+TC:wght@400;700&display=swap\" rel=\"stylesheet\">",
         "<link href=\"https://kenaigogo-lang.github.io/design-styles/themes/arcade/arcade.css\" rel=\"stylesheet\">"
       ],
-      "usage": "外層 <div class=\"crt\">；marquee（霓虹標題）、coin（主按鈕）、stats（三格統計）、sel（分頁）、chip、board + row + c0–c5（逐列換色）、mback + mbox（對話框）、seg、btn。只有深色；VT323/Monoton 無中文字，中文落到 Noto Sans TC。來源：為 GameRank 設計的方向（該專案最後改用 NES.css）。"
+      "usage": "外層 <div class=\"crt\">；marquee（霓虹標題）、coin（主按鈕）、stats（三格統計）、sel（分頁）、chip、board + row + c0–c5（逐列換色）、mback + mbox（對話框）、seg、btn。只有深色；VT323/Monoton 無中文字，中文落到 Noto Sans TC。來源：GameRank（與 NES.css 一鍵切換的第二套主題）。"
     }
   ],
   "more": [

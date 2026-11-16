@@ -1,6 +1,6 @@
 # 街機排行榜（arcade）
 
-CRT 掃描線、霓虹招牌、逐列換色的 HIGH SCORE 榜。為 GameRank（遊戲評分）設計的方向，該專案最後改用 NES.css，這裡保留作為收藏。
+CRT 掃描線、霓虹招牌、逐列換色的 HIGH SCORE 榜。來源專案：GameRank（遊戲評分），作為可與 NES.css 一鍵切換的第二套主題。
 
 - `arcade.css`：完整主題，純 CSS、不依賴任何框架。顏色與字體都是 `:root` 上的變數。
 - `index.html`：套用範例資料的預覽。

@@ -5,7 +5,7 @@
 - `docs/index.html`：型錄首頁，每個樣式一張即時縮圖 → https://kenaigogo-lang.github.io/design-styles/
 - `docs/previews/`：每個樣式庫套在同一份範例內容上的完整預覽（daisyUI、Bootswatch 可切換主題）
 - `docs/catalog.json`：機器可讀清單（CDN 引用、用法、適合用途），新專案的 Claude 讀這個
-- `docs/themes/`：收藏的客製主題（目前：`nba/`，DailyHighlight 採用 C/D/E；`arcade/` 街機排行榜，為 GameRank 設計、未採用）
+- `docs/themes/`：收藏的客製主題（目前：`nba/`，DailyHighlight 採用 C/D/E；`arcade/` 街機排行榜，GameRank 的第二套主題（可與 NES.css 一鍵切換））
 - `rules/CLAUDE.md`：個人規則檔，讓每個新的 Claude 對話都知道要先做風格預覽
 
 ## 目前收錄
