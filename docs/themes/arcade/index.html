@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07060d">
+<title>街機排行榜主題</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Monoton&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="arcade.css">
+</head>
+<body>
+<div class="crt">
+  <header class="top">
+    <div class="util"><span>範例資料 · 街機排行榜主題</span>
+      <div class="util-btns"><button type="button" class="link">匯出 JSON</button><button type="button" class="link">匯入 JSON</button><button type="button" class="link danger">登出</button></div></div>
+    <h1 class="marquee">GAMERANK</h1>
+    <p class="sub">— 我的遊戲排行榜 —</p>
+    <dl class="stats" id="stats"></dl>
+    <p class="scope" id="scope"></p>
+    <button type="button" class="coin" id="open"><i>INSERT COIN</i>＋ 新增遊戲</button>
+    <p class="sync"></p>
+  </header>
+  <main class="wrap">
+    <div class="sel" id="tabs"></div>
+    <div class="bar"><div class="chips" id="genres"></div>
+      <select id="sort" aria-label="排序方式"><option value="score">分數 高→低</option><option value="date">日期 新→舊</option><option value="time">時數 長→短</option></select></div>
+    <div class="board">
+      <div class="row hd"><span class="rk">RANK</span><span class="sc">SCORE</span><span></span><span class="nm">NAME</span><span class="pl">SYS</span><span class="gn hs">GENRE</span><span class="hr hs">TIME</span><span class="dt hs">DATE</span><span class="ac"></span></div>
+      <ol id="list"></ol>
+    </div>
+    <p class="foot">© GAMERANK　CREDIT 01</p>
+  </main>
+</div>
+
+<div class="mback" id="modal" hidden>
+  <div class="mbox">
+    <div class="mhead"><h2>ENTER YOUR SCORE<small>新增遊戲評分</small></h2><button type="button" class="x" data-close aria-label="關閉">×</button></div>
+    <form class="mbody" onsubmit="return false">
+      <label class="fl"><span>遊戲名稱</span><input type="text" value="隻狼：暗影雙死"></label>
+      <div class="fl"><span>平台</span><div class="seg"><button type="button" class="p-PS on">PS</button><button type="button">XBOX</button><button type="button">SWITCH</button><button type="button">PC</button></div></div>
+      <div class="mrow"><label class="fl"><span>分數</span><select><option>9.5</option><option>9</option></select></label><label class="fl"><span>時數</span><input type="number" value="64"></label><label class="fl"><span>評分日期</span><input type="date" value="2026-11-15"></label></div>
+      <div class="fl"><div class="flh"><span>類型（可複選）</span><button type="button" class="link">AI 自動判斷</button></div>
+        <div class="chips"><button type="button" class="chip on">類魂</button><button type="button" class="chip on">動作冒險</button><button type="button" class="chip">角色扮演</button><button type="button" class="chip">恐怖</button></div></div>
+      <div class="fl"><span>封面</span><div class="coverrow"><div class="thumb">無封面</div><div style="flex:1;min-width:0"><div class="seg"><button type="button">上傳</button><button type="button">貼上</button><button type="button" class="on">線上搜尋</button></div><p class="hint">可上傳、貼上或線上搜尋封面。</p></div></div></div>
+      <div class="fl"><div class="flh"><span>評語</span><button type="button" class="link">選擇形容標籤</button></div><textarea rows="3">#打擊感爽 #硬派高難 #地圖設計精妙</textarea></div>
+      <div class="tagcat tk-positive"><div class="tags"><button type="button" class="tag on">#打擊感爽</button><button type="button" class="tag tk-negative">#作業感重</button><button type="button" class="tag tk-neutral">#硬派高難</button></div></div>
+      <div class="mfoot"><button type="button" class="btn" data-close>取消</button><button type="button" class="btn go" data-close>存入排行榜</button></div>
+    </form>
+  </div>
+</div>
+
+<script>
+const GAMES = [
+  ['艾爾登法環','PS',10,'類魂, 角色扮演','2024-03-12',142,'#地圖設計精妙 #硬派高難 #重視探索','#c9a227'],
+  ['薩爾達傳說 王國之淚','SWITCH',9.5,'動作冒險','2023-07-02',180,'#創意十足 #自由度高 #重視探索','#4fb286'],
+  ['柏德之門 3','PC',9.5,'角色扮演','2024-01-20',121,'#劇情神作 #多重結局 #文字量大','#b0413e'],
+  ['空洞騎士：絲綢之歌','PC',9,'類惡魔城','2025-10-05',46,'#美術風格獨特 #硬派高難 #音樂神曲','#d64550'],
+  ['黑帝斯 II','SWITCH',9,'Roguelike','2025-11-02',58,'#打擊感爽 #音樂神曲 #角色刻畫生動','#7b5ea7'],
+  ['惡靈古堡 4 重製版','PS',9,'恐怖, 動作冒險','2023-04-22',22,'#打擊感爽 #恐怖壓抑 #優化良好','#8d99ae'],
+  ['對馬戰鬼','PS',8.5,'動作冒險','2022-09-18',62,'#畫面精美 #電影式敘事','#e07a5f'],
+  ['極限競速：地平線 5','XBOX',8.5,'運動競速','2023-02-11',75,'#畫面精美 #休閒療癒','#f2a65a'],
+  ['星空','XBOX',6.5,'角色扮演','2023-10-08',48,'#作業感重 #節奏慢熱','#adb5bd'],
+  ['魔咒之地','PS',5,'動作冒險','2023-02-28',12,'#劇情爛尾 #作業感重','#9d4edd'],
+].map(([title, platform, score, genre, date, hours, comment, color]) => ({ title, platform, score, genre, date, hours, comment, color }));
+const state = { tab: 'ALL', genre: 'ALL', sort: 'score' };
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const ORD = ['1ST', '2ND', '3RD'];
+function paint() {
+  const inTab = GAMES.filter((g) => state.tab === 'ALL' || g.platform === state.tab);
+  const list = inTab.filter((g) => state.genre === 'ALL' || g.genre.split(', ').includes(state.genre))
+    .sort((a, b) => state.sort === 'date' ? b.date.localeCompare(a.date) : state.sort === 'time' ? b.hours - a.hours : b.score - a.score);
+  const avg = inTab.length ? (inTab.reduce((s, g) => s + g.score, 0) / inTab.length).toFixed(1) : '0';
+  $('stats').innerHTML = `<div><dt>遊戲總數</dt><dd class="c2">${inTab.length}<small>款</small></dd></div><div><dt>平均分數</dt><dd class="c0">${avg}<small>/ 10</small></dd></div><div><dt>遊戲總時數</dt><dd class="c3">${inTab.reduce((s, g) => s + g.hours, 0)}<small>小時</small></dd></div>`;
+  $('scope').textContent = state.tab === 'ALL' ? '全部平台合計' : `僅計算 ${state.tab} 平台`;
+  $('tabs').innerHTML = '<span class="lb">SELECT</span>' + ['ALL', 'PS', 'SWITCH', 'XBOX', 'PC'].map((t) => `<button type="button" data-tab="${t}" class="${state.tab === t ? 'on' : ''}">${t === 'ALL' ? '全部' : t}<small>${t === 'ALL' ? GAMES.length : GAMES.filter((g) => g.platform === t).length}</small></button>`).join('');
+  const genres = [...new Set(inTab.flatMap((g) => g.genre.split(', ')))];
+  $('genres').innerHTML = ['ALL', ...genres].map((x) => `<button type="button" data-genre="${x}" class="chip${state.genre === x ? ' on' : ''}">${x === 'ALL' ? '全部類型' : x}</button>`).join('');
+  $('list').innerHTML = list.map((g, i) => `<li class="row c${i % 6}"><span class="rk">${ORD[i] || (i + 1) + 'TH'}</span><span class="sc">${g.score}</span><span class="cv" style="background:${g.color}"></span><span class="nm"><b>${esc(g.title)}</b><small>${esc(g.comment)}</small></span><span class="pl">${g.platform}</span><span class="gn hs">${g.genre.replace(', ', '/')}</span><span class="hr hs">${g.hours}H</span><span class="dt hs">${g.date}</span><span class="ac"><button type="button" class="link">編輯</button><button type="button" class="link danger">刪除</button></span></li>`).join('');
+}
+document.addEventListener('click', (e) => {
+  const t = e.target.closest('[data-tab],[data-genre],[data-close],#open');
+  if (!t) return;
+  if (t.dataset.tab) { state.tab = t.dataset.tab; state.genre = 'ALL'; }
+  else if (t.dataset.genre) state.genre = t.dataset.genre;
+  else { $('modal').hidden = t.id !== 'open'; return; }
+  paint();
+});
+$('sort').addEventListener('change', (e) => { state.sort = e.target.value; paint(); });
+paint();
+</script>
+</body>
+</html>
